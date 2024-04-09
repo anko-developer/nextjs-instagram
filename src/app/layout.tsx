@@ -1,20 +1,21 @@
-import type { Metadata } from "next";
-import { Open_Sans } from "next/font/google";
-import "./globals.css";
-import Navbar from "@/components/Navbar/Navbar";
-import AuthContext from "@/context/AuthContext";
+import type { Metadata } from 'next'
+import { Open_Sans } from 'next/font/google'
+import './globals.css'
+import Navbar from '@/components/Navbar/Navbar'
+import AuthContext from '@/context/AuthContext'
+import SWRConfigContext from '@/context/SWRConfigContext'
 
-const openSans = Open_Sans({ subsets: ["latin"] });
+const openSans = Open_Sans({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: "Instagram",
-  description: "Instagram App",
-};
+  title: 'Instagram',
+  description: 'Instagram App',
+}
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode
 }>) {
   return (
     <html lang="en" className={openSans.className}>
@@ -24,9 +25,11 @@ export default function RootLayout({
             <Navbar />
           </header>
 
-          <main>{children}</main>
+          <main className='w-full flex justify-center bg-neutral-50 min-h-full'>
+            <SWRConfigContext>{children}</SWRConfigContext>
+          </main>
         </AuthContext>
       </body>
     </html>
-  );
+  )
 }

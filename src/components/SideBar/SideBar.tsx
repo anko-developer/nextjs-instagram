@@ -1,11 +1,11 @@
-import { User } from "@/model/user";
-import Avatar from "../Avatar/Avatar";
+import { User } from '@/model/user'
+import Avatar from '../Avatar/Avatar'
 
 type Props = {
-  user: User;
+  user: User
 }
 
-export default function SideBar({ user: {name, username, image} }: Props) {
+export default function SideBar({ user: { name, username, image } }: Props) {
   return (
     <>
       <div className="flex items-center">
@@ -14,15 +14,14 @@ export default function SideBar({ user: {name, username, image} }: Props) {
           <p className="font-bold">{username}</p>
           <p className="text-lg text-neutral-500 leading-4">{name}</p>
         </div>
-        
       </div>
       <p className="text-sm text-neutral-500 mt-8">
-        About ・ Help ・ Press ・ API ・ Jobs ・ Privacy ・ Terms ・ Location ・ Language
+        About ・ Help ・ Press ・ API ・ Jobs ・ Privacy ・ Terms ・ Location ・
+        Language
       </p>
       <p className="font-bold text-sm mt-8 text-neutral-500">
         @Copyright INSTAGRAM from ANKO
       </p>
     </>
-  );
+  )
 }
-

@@ -1,8 +1,3 @@
 export default function PostList() {
-  return (
-    <div>
-      PostList
-    </div>
-  );
+  return <div>PostList</div>
 }
-
