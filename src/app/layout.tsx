@@ -1,21 +1,21 @@
-import type { Metadata } from 'next'
-import { Open_Sans } from 'next/font/google'
-import './globals.css'
-import Navbar from '@/components/Navbar/Navbar'
-import AuthContext from '@/context/AuthContext'
-import SWRConfigContext from '@/context/SWRConfigContext'
+import type { Metadata } from 'next';
+import { Open_Sans } from 'next/font/google';
+import './globals.css';
+import Navbar from '@/components/Navbar/Navbar';
+import AuthContext from '@/context/AuthContext';
+import SWRConfigContext from '@/context/SWRConfigContext';
 
-const openSans = Open_Sans({ subsets: ['latin'] })
+const openSans = Open_Sans({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'Instagram',
   description: 'Instagram App',
-}
+};
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode
+  children: React.ReactNode;
 }>) {
   return (
     <html lang="en" className={openSans.className}>
@@ -29,7 +29,8 @@ export default function RootLayout({
             <SWRConfigContext>{children}</SWRConfigContext>
           </main>
         </AuthContext>
+        <div id="portal" />
       </body>
     </html>
-  )
+  );
 }
