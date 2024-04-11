@@ -1,3 +1,5 @@
+import UserSearch from '@/components/UserSearch/UserSearch';
+
 export default function SearchPage() {
-  return <div>SearchPage</div>
+  return <UserSearch />;
 }

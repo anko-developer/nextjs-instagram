@@ -1,11 +1,11 @@
-import { client } from './sanity'
+import { client } from './sanity';
 type OAuthUser = {
-  id: string
-  email: string
-  name: string
-  image?: string | null
-  username: string
-}
+  id: string;
+  email: string;
+  name: string;
+  image?: string | null;
+  username: string;
+};
 export async function addUser({ id, username, email, image, name }: OAuthUser) {
   return client.createIfNotExists({
     _id: id,
@@ -17,7 +17,7 @@ export async function addUser({ id, username, email, image, name }: OAuthUser) {
     following: [],
     followers: [],
     bookmarks: [],
-  })
+  });
 }
 
 export async function getUserByUsername(username: string) {
@@ -29,5 +29,19 @@ export async function getUserByUsername(username: string) {
       followers[]->{username, image},
       "bookmarks":bookmarks[]->_id
     }`,
-  )
+  );
+}
+
+export async function searchUsers(keyword?: string) {
+  const query = keyword
+    ? `&& (name match "${keyword}") || (username match "${keyword}")`
+    : '';
+  return client.fetch(
+    `*[_type =="user" ${query}]{
+      ...,
+      "following": count(following),
+      "followers": count(followers),
+    }
+    `,
+  );
 }
