@@ -1,1 +1,1 @@
-## Instagram (Next.js)..
+## Instagram (Next.js)
